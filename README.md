@@ -14,6 +14,34 @@ This is a simple attackbox created using docker to help create a clean environme
 
 ![App Screenshot](screens/startup.png)
 
+## Added Repositories
+
+This machine comes stock with the following repositories, be sure to share some love.
+```
+https://github.com/Pennyw0rth/NetExec
+https://github.com/RustScan/RustScan
+https://github.com/Tib3rius/AutoRecon
+https://github.com/s0md3v/XSStrike
+```
+
+## Added functions in bashrc
+```
+nmap-initial() {
+    nmap -O -sC -sV --top-ports 2000 "$1" | tee "/root/$1.txt"
+}
+
+ffuf-dirs() {
+    ffuf -u "$1/FUZZ" -w /path/to/seclists/Discovery/Web-Content/common.txt | tee "/root/$1-dirs.txt"
+}
+
+ffuf-dir-quick() {
+    ffuf -u "$1/FUZZ" -w /path/to/seclists/Discovery/Web-Content/directory-list-2.3-small.txt | tee "/root/$1-dirsq.txt"
+}
+
+ffuf-files() {
+    ffuf -u "$1/FUZZ" -w /path/to/seclists/Discovery/Web-Content/all.txt | tee "/root/$1-files.txt"
+}
+```
 ## Prerequisites
 
 You must have an X server such as MobaXterm or Xming running and listening for connections prior to launching the docker container.
@@ -50,5 +78,3 @@ Oneliner:
 ```powershell
 $ip = Get-NetIPAddress | Where-Object AddressState -eq "Preferred" | where ValidLifeTime -lt "24:00:00" | select -ExpandProperty IPAddress;$DISPLAY = "$IP`:0.0";docker run -v firefox:/root/.mozilla/firefox  --rm -t -i --privileged --env DISPLAY=$DISPLAY redteam
 ```
-
-
