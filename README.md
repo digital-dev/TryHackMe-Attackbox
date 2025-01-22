@@ -14,7 +14,12 @@ This is a simple attackbox created using docker to help create a clean environme
 
 ![App Screenshot](screens/startup.png)
 
-## Added Repositories
+## Customizations
+- nGinx server automatically starts with container.
+- linpeas, winpeas, pspy automatically copied to webserver
+
+
+## Preloaded Repositories
 
 This machine comes stock with the following repositories, be sure to share some love.
 ```
@@ -22,6 +27,8 @@ https://github.com/Pennyw0rth/NetExec
 https://github.com/RustScan/RustScan
 https://github.com/Tib3rius/AutoRecon
 https://github.com/s0md3v/XSStrike
+https://github.com/DominicBreuker/pspy
+https://github.com/peass-ng/PEASS-ng/
 ```
 
 ## Added functions in bashrc
